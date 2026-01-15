@@ -1,0 +1,64 @@
+# PHPStaticRender Configuration File
+# This file is OPTIONAL - you can delete it if you don't need custom configurations
+# The script will work perfectly using default settings defined in phpstaticrender.py
+#
+# This file allows you to customize the behavior of PHPStaticRender per project
+# 
+# Requirements to use this file:
+# - Python 3.11+: Built-in TOML support
+# - Python 3.6-3.10: Install with "pip install toml"
+
+[config]
+# Folder where the final site will be generated
+# CAUTION: This folder is cleaned on each build
+output_folder = "_PHPStaticRender"
+
+# Prefix for files that should be IGNORED entirely (e.g., pure includes)
+# Example: "__header.php" will be ignored, "_menu.php" will be processed
+ignore_prefix = "__"
+
+# Extension of files that should be interpreted by the PHP engine
+php_extension = ".php"
+
+# Subprocess PHP encoding
+# 'utf-8' is the recommended standard
+# Change to 'cp1252' only on legacy Windows if errors occur
+encoding = "utf-8"
+
+# Optional safe mode for PHP execution
+# When enabled, disables risky PHP functions and remote URL access during rendering
+safe_mode = false
+
+# Manual PHP path (if automatic detection fails)
+# Leave empty to auto-detect
+manual_php_path = ""
+
+# List of system folders and files to be ignored
+ignore_system = [
+    ".git", ".gitignore", ".idea", ".vscode", "__pycache__",
+    "node_modules", "vendor", ".DS_Store", "Thumbs.db",
+    ".env", ".env.local", ".env.production", ".key",
+    ".logs", ".tmp", ".temp", ".nyc_output",
+    "composer.lock", "package-lock.json", "yarn.lock",
+    ".phpunit.result.cache", "phpunit.xml", ".phpcs.cache"
+]
+
+# Replace patterns in generated HTML
+# Useful for converting development URLs to production URLs,
+# replacing placeholder text, or adjusting paths
+[replace]
+# Example: Replace localhost URLs with production domain
+# "http://localhost" = "https://example.com"
+# "http://127.0.0.1" = "https://example.com"
+
+# Example: Replace development paths with production CDN
+# "/assets/" = "https://cdn.example.com/assets/"
+
+# Example: Replace placeholder company name
+# "COMPANY_NAME_PLACEHOLDER" = "My Company Inc."
+
+# Example: Replace API endpoints
+# "http://localhost:8080/api" = "https://api.example.com"
+
+# Add your custom replacements below:
+# "search_pattern" = "replacement_text"
